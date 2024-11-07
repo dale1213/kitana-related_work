@@ -12,7 +12,7 @@ In this repo, we collect, build, and test the related work for Kitana
 ## SEMA-Join
 ### Overview
 - The semantic-aware join algorithm converts the join problem into a optimization problem. It aims to maximize the aggregated semantic similarity of the join results. This similarity score can be calculated in two ways: row and column. 
-- When talking about rows, it calculates the similarity of the rows in the join results. 
+- For rows, it calculates the similarity of the rows in the join results. 
 $$
 PMI(r_i, s_j ) = \log \frac{p (r_i, s_j )}{p(r_i)p(s_j)}
 $$
@@ -31,3 +31,11 @@ $$
 x_{ij} \in \{0, 1\}
 $$
 - It then converts it to its duel problem and solves it by losening it to a linear programming problem (it rounds the solution to {0, 0.5, 1}).
+
+### Dataset Explanation
+- `input_keys.csv`: Contains all unique join keys from the input files.
+- `groundtruth_keys.csv`: Contains all unique join keys from the groundtruth files that correspond to the input join keys.
+- `groundtruth_results.csv`: Contains the mapping of input join keys to their corresponding groundtruth join keys. (By the semantic-join algorithm)
+
+### [S3 Bucket url](https://us-east-2.console.aws.amazon.com/s3/buckets/kitana-relatedworkdb?region=us-east-2&bucketType=general&prefix=semantic-join-data/&showversions=false)
+- `s3://kitana-relatedworkdb/semantic-join-data/`
